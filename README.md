@@ -27,6 +27,10 @@
 - Chức năng Save login (7 ngày)
 
 ![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/9dc3e200-f239-4fd5-a425-844a29fbeb7e)
+(Ảnh trên là đăng nhập với checkbox save login được tick)
+
+![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/8522d6d1-976c-4af2-a7c7-225abc06d4a8)
+(Ảnh trên là đăng nhập với checkbox save login không được tick)
 
 - Hiển thị CAPTCHA nếu đăng nhập sai quá 3 lần
   
