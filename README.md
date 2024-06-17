@@ -11,7 +11,7 @@
 - Cài đặt MailHog, sau đó truy cập localhost:8025 (port mặc định của MailHog) để test mail trên môi trường local
 - Tạo SITE_KEY và SECRET_KEY cho Google ReCAPTCHA tại link sau https://www.google.com/recaptcha/admin/create
 - Tạo file config.php trong folder config và thêm 2 giá trị key vừa tạo vào theo mẫu ở file config/config.php.example
-- Chạy lệnh php -S localhost:8080 để khởi tạo server
+- Chạy lệnh cd public sau đó là php -S localhost:8080 để khởi tạo server
 
 # CHỨC NĂNG
 - Đăng ký
