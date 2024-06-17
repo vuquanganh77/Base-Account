@@ -49,12 +49,11 @@ class AuthenticationController {
                     $_SESSION['count_login_err'] = 1;
                 }
             }
-            echo $_SESSION['count_login_err'];
 
             if (is_int($loginDetail)) {
                 //session_start();
 
-                if ($_SESSION['count_login_err'] >= 3) {
+                if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {
                     $secretKey = $config['recaptcha_secret_key'];
                     $responseKey = $_POST['g-recaptcha-response'];
                     $userIP = $_SERVER['REMOTE_ADDR'];
@@ -78,8 +77,16 @@ class AuthenticationController {
                         // Xử lý logic khi xác minh thất bại
                         $errors = ['Xử lý CAPTCHA không thành công'];
                     }
-                }
-            
+                }else{
+                    if (isset($_POST['saved']) && $_POST['saved'] === 'on') {                       // Kiểm tra xem checkbox "Remember Me" có được chọn không
+                        $token = bin2hex(random_bytes(16));                                         // Tạo token ngẫu nhiên                          
+                        $account->saveToken($token, $loginDetail);                                  // Luu token vao db                   
+                        setcookie('remember_token', $token, time() + (7 * 24 * 60 * 60), "/");      // Thiết lập cookie với thời gian sống 7 ngày
+                    }
+    
+                    $_SESSION['user'] = $loginDetail;
+                    header('Location: /user');
+                }            
             } else {
                 $errors[] = $loginDetail;                                                       // Lưu lỗi
             }

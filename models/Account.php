@@ -10,8 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require '../vendor/autoload.php';
 
-class Account
-{
+class Account {
     public ?string $first_name = null;
     public ?string $last_name = null;
     public ?string $email = null;

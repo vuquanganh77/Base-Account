@@ -73,11 +73,6 @@
                         </div>
                     </form>
 
-                    <div class="language-switch">
-                        <button id="english-btn">English</button>
-                        <button id="vietnamese-btn">Tiếng Việt</button>
-                    </div>
-
                 </div>
             </div>
         </div>
