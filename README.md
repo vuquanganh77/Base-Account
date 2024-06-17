@@ -26,6 +26,8 @@
 
 - Chức năng Save login (7 ngày)
 
+![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/9dc3e200-f239-4fd5-a425-844a29fbeb7e)
+
 - Hiển thị CAPTCHA nếu đăng nhập sai quá 3 lần
   
 ![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/ef052751-2ff8-41cd-b2b1-93c992261314)
