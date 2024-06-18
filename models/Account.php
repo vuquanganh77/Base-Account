@@ -59,9 +59,9 @@ class Account {
 
         // Check mail ton tai hay chua
         $emailExists = $this->getUserByEmail($this->email);
-            if ($emailExists) {
-                $errors[] = 'Email đã tồn tại';
-            }
+        if ($emailExists) {
+            $errors[] = 'Email đã tồn tại';
+        }
 
         // validate email 
         if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
