@@ -131,7 +131,7 @@
             <div class="logo"></div>
             <div class='menu'>
                 <div class='item'>
-                    <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== '') : ?>
+                    <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== null) : ?>
                             <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
                         <?php else : ?>
                             <img src="../../images/default.jpg" alt="">
@@ -181,7 +181,7 @@
 
 
             <div class="user-details">
-                <div class="ava"><?php if ($userData['profile_image'] !== '') : ?>
+                <div class="ava"><?php if ($userData['profile_image'] !== null) : ?>
                         <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
                     <?php else : ?>
                         <img src="../../images/default.jpg" alt="">
@@ -191,7 +191,7 @@
                     <div class="name line1"> <?php echo $userData['last_name'] . " " . $userData['first_name'] ?></div>
                     <div class="job-title line1"><?php echo $userData['job_title'] !== '' ? $userData['job_title'] : "Chưa nhập chức danh" ?></div>
                     <div class="email line2">Địa chỉ email &emsp; <?php echo $userData['email'] ?></div>
-                    <div class="phone-number line2">Số điện thoại &emsp; <?php echo $userData['phone_number'] !== '' ? $userData['phone_number'] : "Chưa nhập số điện thoại" ?></div>
+                    <div class="phone-number line2">Số điện thoại &emsp; <?php echo $userData['phone_number'] !== null ? $userData['phone_number'] : "Chưa nhập số điện thoại" ?></div>
                 </div>
             </div>
 

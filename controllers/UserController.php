@@ -40,7 +40,7 @@ class UserController {
             //var_dump($queryResult);
             // tach ngay, thang, nam   
             
-            if($userData['dob'] !== ''){   
+            if($userData['dob']){   
                 $dateParts = explode('-',  $userData['dob']);
                 // Lấy các giá trị từ mảng
                 $userData['date'] = $dateParts[0];    
