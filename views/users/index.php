@@ -29,99 +29,116 @@
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-                    <div class="model-left">
-                        <div class="model-left-row">
-                            <div class="model-title">Your first name</div>
-                            <div class="model-subtitle">Your first name</div>
+                    <div class="modal-form-detail">
+                        <div class="model-left">
+                            <div class="model-left-row">
+                                <div class="model-title">Your first name</div>
+                                <div class="model-subtitle">Your first name</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Your last name</div>
+                                <div class="model-subtitle">Your last name</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Email</div>
+                                <div class="model-subtitle">Your email address</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Username</div>
+                                <div class="model-subtitle">Your username</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Job title</div>
+                                <div class="model-subtitle">Job title</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Profile image</div>
+                                <div class="model-subtitle">Profile image</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Date of birth</div>
+                                <div class="model-subtitle">Date of birth</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Your phone number</div>
+                                <div class="model-subtitle">Your phone number</div>
+                            </div>
+                            <div class="model-left-row">
+                                <div class="model-title">Current address</div>
+                                <div class="model-subtitle">Current address</div>
+                            </div>
                         </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Your last name</div>
-                            <div class="model-subtitle">Your last name</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Email</div>
-                            <div class="model-subtitle">Your email address</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Username</div>
-                            <div class="model-subtitle">Your username</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Job title</div>
-                            <div class="model-subtitle">Job title</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Profile image</div>
-                            <div class="model-subtitle">Profile image</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Date of birth</div>
-                            <div class="model-subtitle">Date of birth</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Your phone number</div>
-                            <div class="model-subtitle">Your phone number</div>
-                        </div>
-                        <div class="model-left-row">
-                            <div class="model-title">Current address</div>
-                            <div class="model-subtitle">Current address</div>
+
+                        <div class="model-right">
+                            <div class="model-input"><input type="text" name="first_name" placeholder="Tên của bạn" value="<?php echo $userData['first_name'] ?>"></div>
+                            <div class="model-input"><input type="text" name="last_name" placeholder="Họ của bạn" value="<?php echo $userData['last_name'] ?>"></div>
+                            <div class="model-input"><input type="text" name="email" placeholder="Email" value="<?php echo $userData['email'] ?>" disabled></div>
+                            <div class="model-input"><input type="text" name="username" placeholder="Username" value="<?php echo $userData['username'] ?>" disabled></div>
+                            <div class="model-input"><input type="text" name="job_title" placeholder="Jobtitle" value="<?php echo $userData['job_title'] ?>"></div>
+                            <div class="model-input-image"><input type="file" id="imageUpload" name="profile_image" accept="image/*"></div>
+
+                            <div class="model-input model-input_dropdown">
+                                <select id="date-dropdown" name="date-dropdown" class="dropdown">
+                                    <?php
+                                    $currentDate = $userData['date'];        // Giá trị date lấy từ cơ sở dữ liệu
+                                    if ($currentDate === '') {
+                                        echo '<option value="" disabled hidden selected>-- Select date --</option>';
+                                    } else {
+                                        echo '<option value="" disabled hidden>-- Select date --</option>';
+                                    }
+                                    $dates = range(1, 31);                    // Tạo mảng từ 1 đến 31
+
+                                    foreach ($dates as $date) {
+                                        $selected = ($date == $currentDate) ? 'selected' : '';
+                                        echo "<option value='$date' $selected>$date</option>";
+                                    }
+                                    ?>
+                                </select>
+
+                                <select id="month-dropdown" name="month-dropdown" class="dropdown dropdown1">
+                                    
+                                    <?php
+                                    $currentMonth = $userData['month'];        // Giá trị month lấy từ cơ sở dữ liệu
+                                    if ($currentMonth === '') {
+                                        echo '<option value="" disabled hidden selected>-- Select month --</option>';
+                                    } else {
+                                        echo '<option value="" disabled hidden>-- Select month --</option>';
+                                    }
+                                    $months = range(1, 12);                    // Tạo mảng từ 1 đến 12
+
+                                    foreach ($months as $month) {
+                                        $selected = ($month == $currentMonth) ? 'selected' : '';
+                                        echo "<option value='$month' $selected>$month</option>";
+                                    }
+                                    ?>
+                                </select>
+
+                                <select id="year-dropdown" name="year-dropdown" class="dropdown">
+                                    <?php
+                                    $currentYear = $userData['year'];        // Giá trị month lấy từ cơ sở dữ liệu
+                                    if ($currentYear === '') {
+                                        echo '<option value="" disabled hidden selected>-- Select year --</option>';
+                                    } else {
+                                        echo '<option value="" disabled hidden>-- Select year --</option>';
+                                    }
+                                    $years = range(2024, 1960);                    // Tạo mảng từ 1 đến 12
+
+                                    foreach ($years as $year) {
+                                        $selected = ($year == $currentYear) ? 'selected' : '';
+                                        echo "<option value='$year' $selected>$year</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="model-input"><input type="text" name="phone_number" placeholder="Phone Number" value="<?php echo $userData['phone_number'] ?>"></div>
+                            <div class="model-input model-address"><input type="text" name="address" placeholder="Address" value="<?php echo $userData['address'] ?>"></div>
                         </div>
                     </div>
-
-                    <div class="model-right">
-                        <div class="model-input"><input type="text" name="first_name" placeholder="Tên của bạn" value="<?php echo $userData['first_name'] ?>"></div>
-                        <div class="model-input"><input type="text" name="last_name" placeholder="Họ của bạn" value="<?php echo $userData['last_name'] ?>"></div>
-                        <div class="model-input"><input type="text" name="email" placeholder="Email" value="<?php echo $userData['email'] ?>" disabled></div>
-                        <div class="model-input"><input type="text" name="username" placeholder="Username" value="<?php echo $userData['username'] ?>" disabled></div>
-                        <div class="model-input"><input type="text" name="job_title" placeholder="Jobtitle" value="<?php echo $userData['job_title'] ?>"></div>
-                        <div class="model-input"><input type="file" id="imageUpload" name="profile_image" accept="image/*"></div>
-
-                        <div class="model-input">
-                            <select id="date-dropdown" name="date-dropdown" class="dropdown">
-                                <option value="" disabled hidden>-- Select date --</option>
-                                <?php
-                                $currentDate = $userData['date'];        // Giá trị date lấy từ cơ sở dữ liệu
-                                $dates = range(1, 31);                    // Tạo mảng từ 1 đến 31
-
-                                foreach ($dates as $date) {
-                                    $selected = ($date == $currentDate) ? 'selected' : '';
-                                    echo "<option value='$date' $selected>$date</option>";
-                                }
-                                ?>
-                            </select>
-
-                            <select id="month-dropdown" name="month-dropdown" class="dropdown dropdown1">
-                                <option value="" disabled hidden>-- Select month --</option>
-                                <?php
-                                $currentMonth = $userData['month'];        // Giá trị month lấy từ cơ sở dữ liệu
-                                $months = range(1, 12);                    // Tạo mảng từ 1 đến 12
-
-                                foreach ($months as $month) {
-                                    $selected = ($month == $currentMonth) ? 'selected' : '';
-                                    echo "<option value='$month' $selected>$month</option>";
-                                }
-                                ?>
-                            </select>
-
-                            <select id="year-dropdown" name="year-dropdown" class="dropdown">
-                                <option value="" disabled hidden>-- Select year --</option>
-                                <?php
-                                $currentYear = $userData['year'];        // Giá trị month lấy từ cơ sở dữ liệu
-                                $years = range(2024, 1960);                    // Tạo mảng từ 1 đến 12
-
-                                foreach ($years as $year) {
-                                    $selected = ($year == $currentYear) ? 'selected' : '';
-                                    echo "<option value='$year' $selected>$year</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-
-                        <div class="model-input"><input type="text" name="phone_number" placeholder="Phone Number" value="<?php echo $userData['phone_number'] ?>"></div>
-                        <div class="model-input model-address"><input type="text" name="address" placeholder="Address" value="<?php echo $userData['address'] ?>"></div>
+                    <div class="button-group">
+                        <div id="close" class="button2">Cancel</div>
+                        <button class="button1" type="submit">Update</button>
                     </div>
-                    <button class="button1" type="submit">OK</button>
-                    <div id="close" class="button2">Cancel</div>
                 </form>
 
             </div>
@@ -176,7 +193,7 @@
                     <div class="title">Tài khoản</div>
                     <div class="job-title"><?php echo $userData['last_name'] . " " . $userData['first_name'] . " (" . $userData['username'] . ")" . "   " . $userData['job_title'] ?></div>
                 </div>
-                <button id="editbtn" onclick="togglePopup()" class="bt-edit">Chỉnh sửa tài khoản</button>
+                <button id="editbtn" onclick="togglePopup()" class="bt-edit">Edit my account</button>
             </div>
 
 
