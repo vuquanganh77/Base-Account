@@ -57,6 +57,12 @@ class Account {
             $errors[] = 'Mật khẩu không khớp';
         }
 
+        // Check mail ton tai hay chua
+        $emailExists = $this->getUserByEmail($this->email);
+            if ($emailExists) {
+                $errors[] = 'Email đã tồn tại';
+            }
+
         // validate email 
         if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Địa chỉ email không hợp lệ.";
@@ -173,5 +179,6 @@ class Account {
     public function updateCountLogin($email) {
         $db = Database::$db;
         $db->updateCountLogin($email);
-    }
+    } 
+
 }

@@ -103,8 +103,7 @@ class AuthenticationController {
         ]);
     }
 
-    public function signup(Router $router)
-    {
+    public function signup(Router $router) {
         $errors = [];
         $accountData = [
             'name' => '',
@@ -139,8 +138,7 @@ class AuthenticationController {
         ]);
     }
 
-    public function logout()
-    {
+    public function logout() {
         session_start();
         unset($_SESSION['user']);                                                               // Xóa $_SESSION['user']
         setcookie('remember_token', '', time() - (7 * 24 * 60 * 60), '/');                      // Xóa cookie
@@ -150,8 +148,7 @@ class AuthenticationController {
         exit;
     }
 
-    public function forgetPassword(Router $router)
-    {
+    public function forgetPassword(Router $router) {
         $errors = [];
         $notices = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -183,8 +180,7 @@ class AuthenticationController {
         ]);
     }
 
-    public function resetPassword(Router $router)
-    {
+    public function resetPassword(Router $router) {
         $errors = [];
         $notices = [];
         //$token = '';

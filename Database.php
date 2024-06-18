@@ -116,4 +116,5 @@ class Database {
         $statement->bindValue(':email', $email);
         $statement->execute();
     }
+
 }
