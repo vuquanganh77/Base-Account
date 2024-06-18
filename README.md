@@ -4,6 +4,7 @@
 - PHP
 - mySQL
 - MailHog
+- Google ReCAPTCHA (V2)
 
 # CÀI ĐẶT
 - git clone https://github.com/vuquanganh77/Base-Account.git
@@ -52,7 +53,8 @@
 
 - Chỉnh sửa thông tin người dùng
   
-![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/119bdc6e-ec89-4bbc-a2fb-c0c32904c82c)
+![image](https://github.com/vuquanganh77/Base-Account/assets/55951091/6d49c644-8462-499f-b833-94b44688733a)
+
 
       + Chức năng Upload ảnh
   
