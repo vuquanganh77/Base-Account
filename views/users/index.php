@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
     <link rel="stylesheet" href="../../css/user.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="../../script.js"></script>
 </head>
 
 <body>
@@ -263,29 +264,6 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // Khi bam vao nut edit 
-            $('#editbtn').click(function() {
-                $('.model').css('transform', 'scale(1)');
-            });
-
-            $('#editbtn').click(function() {
-                $('#main').css('background', 'rgba(0, 0, 0, 0.3)');
-            });
-
-            // Khi bam vao nut cancel
-            $('#close').click(function() {
-                $('.model').css('transform', 'scale(0)');
-            });
-
-            $('#close').click(function() {
-                $('#main').css('background', '');
-            });
-
-        });
-    </script>
 
 </body>
 
