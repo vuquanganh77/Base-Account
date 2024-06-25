@@ -181,4 +181,24 @@ class Account {
         $db->updateCountLogin($email);
     } 
 
+    public function handleCaptcha($secretKey, $responseKey, $userIP) {
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+        $response = file_get_contents($url); 
+        $response = json_decode($response);
+        if ($response->success) {
+            // Xử lý logic khi xác minh thành công 
+            return true;
+        } else {
+            // Xử lý logic khi xác minh thất bại
+            return false;
+        }
+    } 
+
+
+    public function handleRememberMe($loginDetail) {
+        $token = bin2hex(random_bytes(16));                                                 // Tạo token ngẫu nhiên                          
+        $this->saveToken($token, $loginDetail);                                             // Luu token vao db                   
+        setcookie('remember_token', $token, time() + (7 * 24 * 60 * 60), "/");              // Thiết lập cookie với thời gian sống 7 ngày
+    }
+
 }
