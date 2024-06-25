@@ -9,6 +9,8 @@
     <meta name='AUTHOR' content='vqanh77'>
     <link rel="shortcut icon" href="https://static-gcdn.basecdn.net/account/image/fav.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="../../css/authen.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../signup.js"></script>
 </head>
 
 <body>
@@ -27,13 +29,7 @@
                             <h1>Đăng ký</h1>
                         </div>
 
-                        <?php if (!empty($errors)) : ?>
-                            <div class="alert alert-danger">
-                                <?php foreach ($errors as $error) : ?>
-                                    <div class='error'><?php echo $error; ?></div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="alert alert-danger" style="display: none;"></div>
 
                         <div class='sub-title'></div>
 
@@ -72,6 +68,8 @@
                             <button class='submit' type="submit">Đăng ký</button>
                         </div>
                     </form>
+
+
 
                 </div>
             </div>

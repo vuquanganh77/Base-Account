@@ -10,11 +10,15 @@
     <link rel="shortcut icon" href="https://static-gcdn.basecdn.net/account/image/fav.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="../../css/authen.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../login.js"></script>
 </head>
 
 <body>
     <div class='container'>
         <div class='left scroll'>
+            <div class="overlay"></div>
+            <div class="spinner"></div>
             <div class="scroll-wrap">
                 <div class='box-wrap'>
                     <div class='logo'>
@@ -27,13 +31,11 @@
                             <h1>Đăng nhập</h1>
                         </div>
                         <div class='sub-title'>Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</div>
-                        <?php if (!empty($errors)) : ?>
-                            <div class="alert alert-danger">
-                                <?php foreach ($errors as $error) : ?>
-                                    <div class='error'><?php echo $error; ?></div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
+
+                        <div class="alert alert-danger " style="display: none;">
+
+                        </div>
+
                         <div class='form'>
 
                             <div class='row'>
@@ -48,15 +50,20 @@
                                 <div class='input'><input type="password" name="password" placeholder="Mật khẩu của bạn"></div>
                             </div>
 
+
                             <div class="row xo ">
                                 <div class='checkbox'><input id="rememberme" type='checkbox' checked name='saved'> &nbsp; Giữ tôi luôn đăng nhập</div>
                                 <button class='submit'>Đăng nhập để bắt đầu làm việc</button>
 
+
+                                <!-- Spinner Container -->
+                            
+                                
                                 <!-- Captcha -->
-                                <?php if($is_captcha_display) : ?>                               
-                                    <div class="g-recaptcha captcha-form" data-sitekey=<?php echo $recaptcha_site_key?>></div>                                
-                                <?php endif; ?>
-                                    <!-- End Captcha -->
+
+                                <div class="g-recaptcha captcha-form" style="display: none;" data-sitekey=<?php echo $recaptcha_site_key ?>></div>
+
+                                <!-- End Captcha -->
 
                                 <div class="oauth">
                                     <div class='label'>

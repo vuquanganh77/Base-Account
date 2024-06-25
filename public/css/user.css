@@ -448,7 +448,12 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
+
     /* padding-right: 10px; */
+}
+
+.nav-items {
+    text-align: center;
 }
 
 .mid-item {
@@ -457,5 +462,7 @@
 
 .bot-item {
     margin-top: 280px;
-}
+} 
+
+
 

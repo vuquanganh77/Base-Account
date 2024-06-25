@@ -1,5 +1,4 @@
 <?php
-
 namespace app\controllers;
 
 use app\Router;
@@ -13,6 +12,7 @@ class AuthenticationController {
         $is_captcha_display = false;
         session_start();                                                                                // Khởi tạo session
         $account = new Account();                                                                       // Khai báo đối tượng model Account
+
 
         if (!isset($_SESSION['user']) && isset($_COOKIE['remember_token'])) {
             $token = $_COOKIE['remember_token'];                                                        // Lấy token từ cookie
@@ -32,6 +32,7 @@ class AuthenticationController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            header('Content-Type: application/json; charset=utf-8');
             if (!$_POST['email']) {
                 $errors[] = 'Chưa nhập email';                                                          // Kiểm tra xem đã nhập email chưa
             }
@@ -62,7 +63,7 @@ class AuthenticationController {
                         }
 
                         $_SESSION['user'] = $loginDetail;
-                        header('Location: /user');
+                        echo json_encode(['status' => 'success']);
                     }else{
                         $errors = ['Xử lý CAPTCHA không thành công'];
                     }
@@ -72,25 +73,35 @@ class AuthenticationController {
                     }
     
                     $_SESSION['user'] = $loginDetail;
-                    header('Location: /user');
+                   echo json_encode(['status' => 'success']);
                 }            
             } else {
                 $errors[] = $loginDetail;                                                               // Lưu lỗi
             }
+
+
+            if(!empty($errors)){
+                $result = ['status' => 'error', 'errors' => $errors];
+                if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {
+                    $result['is_captcha_display'] = true;
+                }
+                echo json_encode($result);
+            }
         }   
 
-        if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {
-            $is_captcha_display = true;
-        }
+        // if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {
+        //     $is_captcha_display = true;
+        // }
 
-        $router->renderView('authentication/index', [
-            'errors' => $errors,
-            'is_captcha_display' => $is_captcha_display,
-            'recaptcha_site_key' => $config['recaptcha_site_key'],
-        ]);
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $router->renderView('authentication/index', [
+                'recaptcha_site_key' => $config['recaptcha_site_key'],
+            ]);
+        }
     }
 
     public function signup(Router $router) {
+
         $errors = [];
         $accountData = [
             'name' => '',
@@ -101,6 +112,7 @@ class AuthenticationController {
         ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            header('Content-Type: application/json; charset=utf-8');
             $name = $_POST['name'];
             $nameParts = explode(' ', $name);                                                           // tach chuoi thanh mang
             $accountData['last_name'] = array_shift($nameParts);                                        // lay phan tu dau tien cua mang
@@ -115,14 +127,19 @@ class AuthenticationController {
             $account->load($accountData);
             $errors = $account->save();
             if (empty($errors)) {
-                header('Location: /');
+                //header('Location: /'); 
+                echo json_encode(['status' => 'success']);
+            }else{
+                echo json_encode(['status' => 'error', 'errors' => $errors]);
             }
         }
 
-        $router->renderView('authentication/signup', [
-            'account' => $accountData,
-            'errors' => $errors,
-        ]);
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $router->renderView('authentication/signup', [
+                'account' => $accountData,
+            ]);
+        }
+
     }
 
     public function logout() {
@@ -201,3 +218,4 @@ class AuthenticationController {
         ]);
     }
 }
+
