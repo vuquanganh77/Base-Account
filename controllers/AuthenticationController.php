@@ -120,7 +120,7 @@ class AuthenticationController {
 
             $account = new Account();
             $account->load($accountData);
-            $errors = $account->save();
+            $errors = $account->save();                                     // Trong ham nay da xu ly validate du lieu
             if (empty($errors)) {
                 //header('Location: /'); 
                 echo json_encode(['status' => 'success']);
