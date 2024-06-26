@@ -9,10 +9,11 @@
 
 .main {
     display: flex;
+    height: 100vh;
 }
 
 .sidebar {
-    width: 6%;
+    width: 5%;
     height: 100vh;
     background-color: #1b1a1b;
     top: 0;
@@ -25,7 +26,10 @@
 } 
 
 .menu .item {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
     cursor: pointer;
     text-align: center;
 }
@@ -257,10 +261,10 @@
     /* align-items: center; */
     justify-content: center;
     text-align: center;
-    top: 90px;
+    top: 120px;
     width: 40%;
     min-width: 660px;
-    left: 430px;
+    left: 600px;
 } 
 
 .button2 {
@@ -443,26 +447,26 @@
 /*  */
  
 .nav-items img {
-    display: block;
-    position: absolute;
-    width: 60px;
+    width: 100%;
     height: 60px;
     border-radius: 50%;
-
     /* padding-right: 10px; */
 }
 
-.nav-items {
-    text-align: center;
+.nav-items { 
+    width: 100%;
+    /* text-align: center; */
 }
 
 .mid-item {
-    margin-top: 80px;
+    margin-top: 30px;
 } 
 
 .bot-item {
-    margin-top: 280px;
-} 
+    margin-top: 400px;
+    /* position: fixed; */
+}  
+
 
 
 

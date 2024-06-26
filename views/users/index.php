@@ -150,9 +150,9 @@
             <div class='menu'>
                 <div class='item'>
                     <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== null) : ?>
-                            <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
+                            <img class="profile-img" src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
                         <?php else : ?>
-                            <img src="../../images/default.jpg" alt="">
+                            <img class="profile-img" src="../../images/default.jpg" alt="">
                         <?php endif; ?></a>
                 </div>
 
