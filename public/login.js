@@ -1,8 +1,7 @@
 $(document).ready(function() {
     $('form').on('submit', function(event) {
         $('.spinner, .overlay').show();
-        event.preventDefault(); // Prevent the default form submission
-        // Serialize the form data
+        event.preventDefault(); 
         var formData = $(this).serialize();
 
         $.ajax({
@@ -10,17 +9,13 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
-                // Handle the response from the server
                 if (response.status === 'success') {
-                    // If signup is successful, redirect or show a success message
                     // alert('Đăng ký thành công!');
                     window.location.href = '/user'; // Redirect to the login page
-                    // window.location.href = '/success-page'; // Redirect to a success page if needed
                 } else {
                     if(response.is_captcha_display){
                         $('.g-recaptcha').show();
                     }
-                    // If there are validation errors, display them
                     var errors = response.errors;
                     var errorHtml = '';
                     for (var i in errors) { 

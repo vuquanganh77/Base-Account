@@ -13,7 +13,6 @@ class AuthenticationController {
         session_start();                                                                                // Khởi tạo session
         $account = new Account();                                                                       // Khai báo đối tượng model Account
 
-
         if (!isset($_SESSION['user']) && isset($_COOKIE['remember_token'])) {
             $token = $_COOKIE['remember_token'];                                                        // Lấy token từ cookie
             // Tìm người dùng với token này trong database
@@ -56,7 +55,7 @@ class AuthenticationController {
                 if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {         // Neu da nhap sai mat khau qua 3 lan truoc do thi phai check them captcha
                     $handle_captcha = $account->handleCaptcha($config['recaptcha_secret_key'], $_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-                    if($handle_captcha){
+                    if($handle_captcha){                                                                // Neu xac thuc captcha thanh cong
                         $_SESSION['count_login_err'] = 0; 
                         if (isset($_POST['saved']) && $_POST['saved'] === 'on') {                       // Kiểm tra xem checkbox "Remember Me" có được chọn không
                             $account->handleRememberMe($loginDetail);                                   // Xu ly Remember Me
@@ -88,10 +87,6 @@ class AuthenticationController {
                 echo json_encode($result);
             }
         }   
-
-        // if (isset($_SESSION['count_login_err']) && $_SESSION['count_login_err'] >= 3) {
-        //     $is_captcha_display = true;
-        // }
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $router->renderView('authentication/index', [
