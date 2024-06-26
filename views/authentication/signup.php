@@ -11,68 +11,14 @@
     <link rel="stylesheet" type="text/css" href="../../css/authen.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../signup.js"></script>
+    <script src="../../signup_form.js"></script>
 </head>
 
 <body>
     <div class='container'>
-        <div class='left scroll'>
-            <div class="scroll-wrap">
-                <div class='box-wrap'>
-                    <div class='logo'>
-                        <a href="/">
-                            <img src="https://share-gcdn.basecdn.net/brand/logo.full.png" alt="logo">
-                        </a>
-                    </div>
-
-                    <form action="/signup" method="POST">
-                        <div class='title'>
-                            <h1>Đăng ký</h1>
-                        </div>
-
-                        <div class="alert alert-danger" style="display: none;"></div>
-
-                        <div class='sub-title'></div>
-
-                        <div class='form'>
-
-                            <div class='row'>
-                                <div class='label'>Họ và tên</div>
-                                <div class='input'>
-                                    <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $account['name'] ?>">
-                                </div>
-                            </div>
-
-                            <div class='row'>
-                                <div class='label'>Email</div>
-                                <div class='input'>
-                                    <input type="text" name="email" placeholder="Email của bạn" value="<?php echo $account['email'] ?>">
-                                </div>
-                            </div>
-
-                            <div class='row'>
-                                <div class='label'>Tên đăng nhập</div>
-                                <div class='input'>
-                                    <input type="text" name="username" placeholder="Tên đăng nhập của bạn" value="<?php echo $account['username'] ?>">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class='label'>Mật khẩu</div>
-                                <div class='input'><input type="password" name="password" placeholder="Mật khẩu của bạn" value="<?php echo $account['password'] ?>"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class='label'> Nhập lại mật khẩu</div>
-                                <div class='input'><input type="password" name="re_enter_password" placeholder="Nhập lại mật khẩu của bạn" value="<?php echo $account['re_enter_password'] ?>"></div>
-                            </div>
-                            <button class='submit' type="submit">Đăng ký</button>
-                        </div>
-                    </form>
-
-
-
-                </div>
-            </div>
+        <div id='leftContainer' class='left scroll'>
+            <div class="overlay"></div>
+            <div class="spinner"></div>
         </div>
         <div class='right'></div>
     </div>
