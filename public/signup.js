@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('form').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
-
+        $('.spinner, .overlay').show();
         // Serialize the form data
         var formData = $(this).serialize();
 
@@ -26,10 +26,12 @@ $(document).ready(function() {
 
                     $('.alert-danger').html(errorHtml).show();
                 }
+                $('.spinner, .overlay').hide();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // Handle any unexpected errors
-                alert('Có lỗi xảy ra: ' + textStatus);
+                alert('Có lỗi xảy ra: ' + textStatus); 
+                $('.spinner, .overlay').hide();
             }
         });
     });
