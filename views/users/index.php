@@ -15,8 +15,128 @@
 
 <body>
     <div id="main" class="main">
-        <!-- Man pop up -->
-        <div class="model-container">
+        <div class="sidebar">
+            <div class="logo"></div>
+            <div class='menu'>
+                <div class='item'>
+                    <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== null) : ?>
+                            <img class="profile-img" src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
+                        <?php else : ?>
+                            <img class="profile-img" src="../../default.jpg" alt="">
+                        <?php endif; ?></a>
+                </div>
+
+                <div class="mid-item">
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fas fa-user"></i>Cá nhân</a>
+                    </div>
+
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fas fa-bell"></i>Thông báo</a>
+                    </div>
+
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fa-solid fa-user-group"></i>Thành viên</a>
+                    </div>
+
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fa-solid fa-user-group"></i>Nhóm</a>
+                    </div>
+
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fas fa-caret-up"></i>TK Khách</a>
+                    </div>
+
+                    <div class='item'>
+                        <a href="#" class='nav-items'><i class="fas fa-bookmark"></i>Ứng dụng</a>
+                    </div>
+                </div>
+
+                <div class='logout item bot-item'>
+                    <a href="/user/logout" class='nav-items'><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="upper">
+                <div class="text">
+                    <div class="title">Tài khoản</div>
+                    <div class="job-title"><?php echo $userData['last_name'] . " " . $userData['first_name'] . " (" . $userData['username'] . ")" . "   " . $userData['job_title'] ?></div>
+                </div>
+                <button id="editbtn" onclick="togglePopup()" class="bt-edit">Edit my account</button>
+            </div>
+
+
+            <div class="user-details">
+                <div class="ava"><?php if ($userData['profile_image'] !== null) : ?>
+                        <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
+                    <?php else : ?>
+                        <img src="../../default.jpg" alt="">
+                    <?php endif; ?>
+                </div>
+                <div class="info">
+                    <div class="name line1"> <?php echo $userData['last_name'] . " " . $userData['first_name'] ?></div>
+                    <div class="job-title line1"><?php echo $userData['job_title'] !== '' ? $userData['job_title'] : "Chưa nhập chức danh" ?></div>
+                    <div class="email line2">Địa chỉ email &emsp; <?php echo $userData['email'] ?></div>
+                    <div class="phone-number line2">Số điện thoại &emsp; <?php echo $userData['phone_number'] !== '' ? $userData['phone_number'] : "Chưa nhập số điện thoại" ?></div>
+                </div>
+            </div>
+
+            <div class="form">
+                <div class="info">
+                    <div class="contact row"> Thông tin liên hệ </div>
+                    <div class="group-row"> Nhóm(2) </div>
+                    <div class="group">
+                        <div class="group-name">Nhóm 90 user của Mai</div>
+                        <div class="group-detail">83 thành viên &ensp; Tham gia ngày 31-08-2022</div>
+                    </div>
+                    <div class="group">
+                        <div class="group-name">Nhóm 100 user của Mai</div>
+                        <div class="group-detail">102 thành viên &ensp; Tham gia ngày 31-08-2022</div>
+                    </div>
+                    <div class="row down">Nhân viên trực tiếp (0)</div>
+                    <div class="row">Học vấn</div>
+                    <div class="row">Kinh nghiệm làm việc</div>
+                </div>
+            </div>
+        </div>
+
+        <div class='details'>
+            <div class="user-info">
+                <div class="name"><?php echo $userData['last_name'] . " " . $userData['first_name'] ?></div>
+                <div class="title"><?php echo '@' . $userData['username'] ?> &ensp; <?php echo $userData['email'] ?></div>
+            </div>
+
+            <div class="user-info-details">
+                <div class="user-title">THÔNG TIN TÀI KHOẢN</div>
+
+                <div class="list-user-item">
+                    <div class="user-item"><i class="fa-solid fas fa-cog"></i>Tài khoản</div>
+                    <div class="user-item"><i class="fa-solid fas fa-pencil-alt"></i>Chỉnh sửa</div>
+                    <div class="user-item"><i class="fa-solid fas fa-compass"></i>Ngôn ngữ</div>
+                    <div class="user-item"><i class="fa-solid fas fa-exclamation-triangle"></i>Đổi mật khẩu</div>
+                    <div class="user-item"><i class="fa-solid fas fa-palette"></i>Đổi màu hiển thị</div>
+                    <div class="user-item"><i class="fa-solid far fa-calendar-alt"></i>Lịch làm việc</div>
+                    <div class="user-item"><i class="fa-solid fas fa-shield"></i>Bảo mật hai lớp</div>
+                </div>
+
+                <div class="user-title1">ỨNG DỤNG - BẢO MẬT</div>
+                <div class="user-title">TÙY CHỈNH NÂNG CAO</div>
+
+                <div class="list-user-item">
+                    <div class="user-item"><i class="fa-solid fas fa-history"></i>Lịch sử đăng nhập</div>
+                    <div class="user-item"><i class="fa-solid fas fa-desktop"></i>Quản lý thiết bị</div>
+                    <div class="user-item"><i class="fa-solid fas fa-envelope"></i>Tùy chỉnh email thông báo</div>
+                    <div class="user-item"><i class="fa-solid fas fa-clock"></i>Chỉnh sửa múi giờ</div>
+                    <div class="user-item"><i class="fa-solid fas fa-user-clock"></i>Ủy quyền tạm thời</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Man pop up -->
+    <div class="model-container">
             <div class="model">
                 <div class="model-upper">
                     <div class="model-upper-title">EDIT PERSONAL PROFILE</div>
@@ -145,125 +265,6 @@
             </div>
         </div>
         <!-- Ket thuc man pop up -->
-        <div class="sidebar">
-            <div class="logo"></div>
-            <div class='menu'>
-                <div class='item'>
-                    <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== null) : ?>
-                            <img class="profile-img" src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
-                        <?php else : ?>
-                            <img class="profile-img" src="../../default.jpg" alt="">
-                        <?php endif; ?></a>
-                </div>
-
-                <div class="mid-item">
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fas fa-user"></i>Cá nhân</a>
-                    </div>
-
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fas fa-bell"></i>Thông báo</a>
-                    </div>
-
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fa-solid fa-user-group"></i>Thành viên</a>
-                    </div>
-
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fa-solid fa-user-group"></i>Nhóm</a>
-                    </div>
-
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fas fa-caret-up"></i>TK Khách</a>
-                    </div>
-
-                    <div class='item'>
-                        <a href="#" class='nav-items'><i class="fas fa-bookmark"></i>Ứng dụng</a>
-                    </div>
-                </div>
-
-                <div class='logout item bot-item'>
-                    <a href="/user/logout" class='nav-items'><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="upper">
-                <div class="text">
-                    <div class="title">Tài khoản</div>
-                    <div class="job-title"><?php echo $userData['last_name'] . " " . $userData['first_name'] . " (" . $userData['username'] . ")" . "   " . $userData['job_title'] ?></div>
-                </div>
-                <button id="editbtn" onclick="togglePopup()" class="bt-edit">Edit my account</button>
-            </div>
-
-
-            <div class="user-details">
-                <div class="ava"><?php if ($userData['profile_image'] !== null) : ?>
-                        <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
-                    <?php else : ?>
-                        <img src="../../default.jpg" alt="">
-                    <?php endif; ?>
-                </div>
-                <div class="info">
-                    <div class="name line1"> <?php echo $userData['last_name'] . " " . $userData['first_name'] ?></div>
-                    <div class="job-title line1"><?php echo $userData['job_title'] !== '' ? $userData['job_title'] : "Chưa nhập chức danh" ?></div>
-                    <div class="email line2">Địa chỉ email &emsp; <?php echo $userData['email'] ?></div>
-                    <div class="phone-number line2">Số điện thoại &emsp; <?php echo $userData['phone_number'] !== '' ? $userData['phone_number'] : "Chưa nhập số điện thoại" ?></div>
-                </div>
-            </div>
-
-            <div class="form">
-                <div class="info">
-                    <div class="contact row"> Thông tin liên hệ </div>
-                    <div class="group-row"> Nhóm(2) </div>
-                    <div class="group">
-                        <div class="group-name">Nhóm 90 user của Mai</div>
-                        <div class="group-detail">83 thành viên &ensp; Tham gia ngày 31-08-2022</div>
-                    </div>
-                    <div class="group">
-                        <div class="group-name">Nhóm 100 user của Mai</div>
-                        <div class="group-detail">102 thành viên &ensp; Tham gia ngày 31-08-2022</div>
-                    </div>
-                    <div class="row down">Nhân viên trực tiếp(0)</div>
-                    <div class="row">Học vấn</div>
-                    <div class="row">Kinh nghiệm làm việc</div>
-                </div>
-            </div>
-        </div>
-
-        <div class='details'>
-            <div class="user-info">
-                <div class="name"><?php echo $userData['last_name'] . " " . $userData['first_name'] ?></div>
-                <div class="title"><?php echo '@' . $userData['username'] ?> &ensp; <?php echo $userData['email'] ?></div>
-            </div>
-
-            <div class="user-info-details">
-                <div class="user-title">THÔNG TIN TÀI KHOẢN</div>
-
-                <div class="list-user-item">
-                    <div class="user-item"><i class="fa-solid fas fa-cog"></i>Tài khoản</div>
-                    <div class="user-item"><i class="fa-solid fas fa-pencil-alt"></i>Chỉnh sửa</div>
-                    <div class="user-item"><i class="fa-solid fas fa-compass"></i>Ngôn ngữ</div>
-                    <div class="user-item"><i class="fa-solid fas fa-exclamation-triangle"></i>Đổi mật khẩu</div>
-                    <div class="user-item"><i class="fa-solid fas fa-palette"></i>Đổi màu hiển thị</div>
-                    <div class="user-item"><i class="fa-solid far fa-calendar-alt"></i>Lịch làm việc</div>
-                    <div class="user-item"><i class="fa-solid fas fa-shield"></i>Bảo mật hai lớp</div>
-                </div>
-
-                <div class="user-title1">ỨNG DỤNG - BẢO MẬT</div>
-                <div class="user-title">TÙY CHỈNH NÂNG CAO</div>
-
-                <div class="list-user-item">
-                    <div class="user-item"><i class="fa-solid fas fa-history"></i>Lịch sử đăng nhập</div>
-                    <div class="user-item"><i class="fa-solid fas fa-desktop"></i>Quản lý thiết bị</div>
-                    <div class="user-item"><i class="fa-solid fas fa-envelope"></i>Tùy chỉnh email thông báo</div>
-                    <div class="user-item"><i class="fa-solid fas fa-clock"></i>Chỉnh sửa múi giờ</div>
-                    <div class="user-item"><i class="fa-solid fas fa-user-clock"></i>Ủy quyền tạm thời</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 
