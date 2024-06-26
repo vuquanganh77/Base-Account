@@ -152,7 +152,7 @@
                     <a href="#" class='nav-items'><?php if ($userData['profile_image'] !== null) : ?>
                             <img class="profile-img" src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
                         <?php else : ?>
-                            <img class="profile-img" src="../../images/default.jpg" alt="">
+                            <img class="profile-img" src="../../default.jpg" alt="">
                         <?php endif; ?></a>
                 </div>
 
@@ -202,7 +202,7 @@
                 <div class="ava"><?php if ($userData['profile_image'] !== null) : ?>
                         <img src="../../<?= htmlspecialchars($userData['profile_image']) ?>" alt="">
                     <?php else : ?>
-                        <img src="../../images/default.jpg" alt="">
+                        <img src="../../default.jpg" alt="">
                     <?php endif; ?>
                 </div>
                 <div class="info">
