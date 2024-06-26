@@ -50,14 +50,9 @@
                                 <div class='input'><input type="password" name="password" placeholder="Mật khẩu của bạn"></div>
                             </div>
 
-
                             <div class="row xo ">
                                 <div class='checkbox'><input id="rememberme" type='checkbox' checked name='saved'> &nbsp; Giữ tôi luôn đăng nhập</div>
                                 <button class='submit'>Đăng nhập để bắt đầu làm việc</button>
-
-
-                                <!-- Spinner Container -->
-                            
                                 
                                 <!-- Captcha -->
 
@@ -69,7 +64,7 @@
                                     <div class='label'>
                                         <div class="line"></div>
                                         <span>Hoặc, đăng nhập thông qua SSO</span>
-                                    </div>
+                                    </div> 
                                     <div class="oauth-left">
                                         <button class="gg-button" onclick="location.href='https://sso.base.vn/google'" type="button">
                                             <div class="gg-button-content-wrapper">

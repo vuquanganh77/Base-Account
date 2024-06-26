@@ -2,7 +2,6 @@ $(document).ready(function() {
     $('form').on('submit', function(event) {
         $('.spinner, .overlay').show();
         event.preventDefault(); // Prevent the default form submission
-        console.log("abc");
         // Serialize the form data
         var formData = $(this).serialize();
 
