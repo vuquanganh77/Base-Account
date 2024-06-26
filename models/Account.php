@@ -38,11 +38,43 @@ class Account {
         $this->dob = $data['dob'] ?? null;
     }
 
+    // Ham validate ten dang nhap
+    public function validateUsername($username) {
+        $pattern = '/^[a-zA-Z0-9_]{3,20}$/';                                // Regex cho phép các chữ cái, số và dấu gạch dưới, từ 3 đến 20 ký tự
+
+        if (preg_match($pattern, $username)) {
+            return true;                                                    // Username hop le
+        } else {
+            return false;                                                   // Username khong hop le
+        }
+    } 
+
+    //Ham validate mat khau
+    public function validatePassword($password) {
+        $pattern = '/^(?=.*[A-Za-z])(?=.*\d).{3,}$/';                      // Regex co ca chu va so, it nhat 3 ky tu 
+
+        if(preg_match($pattern, $password)) {
+            return true;                                                    // Password hop le
+        } else {
+            return false;                                                   // Password khong hop le
+        }
+    }
+
     public function save() {
         $errors = [];
 
         if (!$this->first_name && !$this->last_name) {
             $errors[] = 'Tên không được để trống';
+        }
+
+        if (!$this->validateUsername($this->username)) {
+            $errors[] = 'Tên đăng nhập không hợp lệ';
+        } 
+
+        if($this->password && $this->re_enter_password === $this->password) {              
+            if (!$this->validatePassword($this->password)) {
+                $errors[] = 'Mật khẩu phải chứa ít nhất một chữ cái và một số, và có ít nhất 3 ký tự';
+            }
         }
 
         if (!$this->password || !$this->re_enter_password) {
@@ -102,7 +134,7 @@ class Account {
         $db = Database::$db;
         $db->updateUser($this, $_SESSION['user']);
         //}
-
+        
         //return $errors;
     }
 
